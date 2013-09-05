@@ -3,7 +3,7 @@ PeerBeerAwards
 Unfortunately github for Windows is not working on my computer and there are lots of files to upload. However the vast majority of them was generated when creating a project from the Intranet ASP.NET MVC4 template. Therefore:
 
 1. Create a new project using that template
-2. Add these lines to the web.config:
+2. Add these lines to the web.config (see raw version of this file):
 
     <connectionStrings>
         <add name="PeerBeerAwardsContext" connectionString="Data Source=C:\Dev\PeerBeerAwards\db\PeerBeerAwards.sdf;Persist Security Info=True" providerName="System.Data.SqlServerCE.4.0" />
