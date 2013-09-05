@@ -1,0 +1,59 @@
+@model IEnumerable<PeerBeerAwards.Models.Nominee>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Peer Beer Awards Nomination Board</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div id="body">
+        <section class="featured">
+            <div class="content-wrapper">
+                <hgroup class="title">
+                    <h1>Peer Beer</h1>
+                    <h2>Awards Nomination Board</h2>
+                </hgroup>
+                <p>
+                    @User.Identity.Name, award somebody with a beer!
+                </p>
+            </div>
+        </section>
+        <section class="content-wrapper main-content clear-fix">
+
+            <table class="beer">
+                <tbody>
+                    @foreach (var nominee in Model)
+                    {
+                        <tr>
+                            <td style="max-width: 10em">@nominee.Name</td>
+                            <td>
+                                <form action="Home/AwardNominee">
+                                    @for (var i = 0; i < nominee.Awards; i++)
+                                    {
+                                        <img src="~/Images/Beer.png" alt="Beer"/>
+                                    }
+                                    <input type="hidden" name="nomineeId" value="@nominee.NomineeID"/>
+                                    <button type="submit">+</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <form action="Home/AddNominee" method="POST">
+                <input type="text" name="Name" />
+                <button type="submit" class="beer">+</button>
+            </form>
+
+        </section>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+</body>
+</html>
